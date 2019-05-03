@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h1(class="mt-5 mb-1")= "Weather for " + title
+  
+  if error
+    p Could not load data
+  else
+    if data != '' || data != undefined
+      div(class="card transparentItem")
+        div(class="card-header mb-2")
+          p CURRENT WEATHER
+          div(class="row")
+            div(class="col-md-4")
+              div(class="text-center")
+                p(class ="h4") #{data.currentDescription}
+                img(src=data.currentWeatherIcon alt ="" class="img-thumbnail rounded-circle mb-2")
+                p(class="h2") #{data.currentTempCelcius} #[span(class="textSize") °C]
+            div(class="col-md-8")
+              p #[strong UV Index:] #{data.uvIndex} 
+              p #[strong Precipitation:] #{data.precipitation} %
+              p #[strong Humidity:] #{data.humidity} %
+              p #[strong Wind:] #{data.windSpeed} kmph
+         
+        div(class="card-body")
+          ul(class="list-group list-group-flush")
+            li(class="list-group-item") 
+              div(class="row") 
+                each wd in data.weeklyWeather
+                  div(class="col")
+                    p(class="h6") #{wd.date}
+                     div
+                      img(src=wd.hourly[3].weatherIconUrl[0].value alt ="" class="img-thumbnail rounded-circle mb-2")
+                    p(class="h5")  #{wd.maxtempC} ° #{wd.mintempC} °
+                    p(class="h6") #{wd.hourly[3].weatherDesc[0].value}
+                else
+                  p could not load weekly data
+            li(class="list-group-item") 
+            
+          
+      
+    else
+      p "data not available."
+
