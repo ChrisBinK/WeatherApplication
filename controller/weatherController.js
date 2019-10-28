@@ -31,8 +31,7 @@ function displayWeather(location, response){
         {
             finalData = "Could not load data....";
         }
-        response.render('index', { title: finalData.locationName,  data: finalData});
-    })
+        response.render('index', { title: finalData.locationName,  data: finalData});  })
     .catch(function (err) {
         response.render('error', {status: 404, message: err});
    });

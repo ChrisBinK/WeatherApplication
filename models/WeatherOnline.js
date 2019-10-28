@@ -5,7 +5,7 @@
 
 module.exports = {
     base_url: function () {
-        return 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=85a54468c9e741dbb11171252191405&q=';
+        return 'http://api.worldweatheronline.com/premium/v1/weather.ashx?key=af7dbc68c03b47d1b1e115500192810&q=';
     },
     optional_params: function () {
         return '&num_of_days=7&format=json';
